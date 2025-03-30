@@ -1,9 +1,8 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
-
-import Layout from '@/views/layout/index.vue'
-import Login from '@/views/login/index.vue'
-import Home from '@/views/home/index.vue'
-import Goods from '@/views/goods/index.vue'
+import Layout from '@/views/layout/layout.vue'
+import Login from '@/views/login/login.vue'
+import Home from '@/views/home/home.vue'
+import Goods from '@/views/goods/goods.vue'
 import GoodsList from '@/views/goods/goodsList.vue'
 import Category from '@/views/goods/category.vue'
 

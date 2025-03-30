@@ -1,12 +1,10 @@
 <template>
 
     <div>
-        login
+
     </div>
 </template>
 
-<script>
-export default {
+<script setup lang="ts" name="login">
 
-}
 </script>

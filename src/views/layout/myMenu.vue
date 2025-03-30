@@ -30,31 +30,20 @@
 
 
 
-
-
-
 </template>
 
-<script>
+<script setup lang="ts">
 import { useRoute } from 'vue-router'
-import { ref } from 'vue';
-export default {
-    props: {
-        isClose: {
-            type: Boolean,
-            default: false
-        }
-    },
-    setup() {
-
-        const route = useRoute();
-        return {
-            route
-        }
-
+defineProps({
+    isClose: {
+        type: Boolean,
+        default: false
     }
+});
+const route = useRoute();
 
-}
+
+
 </script>
 
 <style lang="less" scoped>

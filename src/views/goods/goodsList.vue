@@ -4,8 +4,6 @@
     </h2>
 </template>
 
-<script>
-export default {
+<script setup lang="ts" name="goodsList">
 
-}
 </script>

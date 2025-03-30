@@ -1,64 +1,60 @@
 <template>
     <div>
-    <div class="header">
-        <div class="icon">
-            <el-icon v-if="isClose" @click="change">
-                <Expand />
-            </el-icon>
-            <el-icon v-else @click="change">
-                <Fold />
-            </el-icon>
-
-        </div>
-        <div class="right">
-            <div class="time">{{ time }}</div>
-            <div class="line">|</div>
-            <div class="loginOut" @click="loginOut">
-                <el-icon>
-                    <el-icon>
-                        <SwitchButton />
-                    </el-icon>
+        <div class="header">
+            <div class="icon">
+                <el-icon v-if="isClose" @click="change">
+                    <Expand />
                 </el-icon>
-            </div>
+                <el-icon v-else @click="change">
+                    <Fold />
+                </el-icon>
 
+            </div>
+            <div class="right">
+                <div class="time">{{ time }}</div>
+                <div class="line">|</div>
+                <div class="loginOut" @click="loginOut">
+                    <el-icon>
+                        <el-icon>
+                            <SwitchButton />
+                        </el-icon>
+                    </el-icon>
+                </div>
+
+            </div>
+        </div>
+        <div class="wrapper">
+            <router-view></router-view>
         </div>
     </div>
-    <div class="wrapper">
-        <router-view></router-view>
-    </div>
-</div>
 </template>
-<script>
-
+<script setup lang="ts" name="myContent">
 import dayjs from 'dayjs';
 import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
-export default {
-    props: {
-        isClose: {
-            type: Boolean,
-            default: false
-        }
-    },
-    emits: ['change'],
-    setup(props, { emit }) {
-        let time = ref(null);
-        const router = useRouter();
-        const loginOut = () => {
-            router.push('/login');
-        };
-        const change = () => {
-            console.log('change');
-            emit('change');
-        };
-        onMounted(() => {
-            time.value = dayjs().format('YYYY-MM-DD HH:mm:ss');
-        });
-        return {
-            time, change, loginOut
-        };
+let time = ref<string | null>(null);
+const router = useRouter();
+
+defineProps({
+    isClose: {
+        type: Boolean,
+        default: false
     }
-}
+});
+
+
+const emit = defineEmits(['change']);
+
+const loginOut = () => {
+    router.push('/login');
+};
+const change = () => {
+    emit('change');
+};
+
+onMounted(() => {
+    time.value = dayjs().format('YYYY-MM-DD HH:mm:ss');
+});
 </script>
 <style lang="less" scoped>
 .header {
